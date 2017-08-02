@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+<!-- 开发模式下使用,这样可以打印出更详细的错误信息  -->
+     <!-- struts.devMode包括了struts.configuration.xml.reload，前者设置为true则后者也就自动设置为true-->
+    
+     <constant name="struts.devMode" value="true" />
+     
+     <include file="struts/struts-customer.xml"></include>
+      <include file="struts/struts-product.xml"></include>
+   
+  
+</struts>

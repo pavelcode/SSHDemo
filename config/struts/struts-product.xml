@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+  
+     <package name="product" extends="struts-default" namespace="/">
+         <action name="product_*" class="productAction" method="{1}">
+            <result name="allproduct" type="chain">
+               <param name="actionName">product_allProduct</param>
+            </result>
+            <result>/WEB-INF/jsp/shopcar.jsp</result>
+            <result name="change_shopcar">/WEB-INF/jsp/change_shopcar.jsp</result>
+             <result name="download" type="stream">  
+                   <!--  "contentType"参数不同，将contentType参数设置为"image/jpeg"，则动作将文件发送给浏览器，并让浏览器显示其内容。
+                                                  将contentType参数设置为"application/octet-stream"，则动作将以文件下载的方式发送给浏览器。
+                                                 换一种说法就是，若为"image/jpeg"，就是告诉浏览器这是一个jpg文件，
+                                                 请显示它的内容；若为"application/octet-stream"，就是告诉浏览器，问用户想不想保存这个文件。 -->
+		               <param name="contentType">image/png</param>
+		              <!--  下载的文件方式：如果下載的事是文本类型的，就直接在网页上打开，不能直接打开的才会打开下载框自己选择 -->
+		              <!-- attachment ：下载时会打开下载框 -->
+		              <!--  fileName="${fileName}" ：action中有对应的属性，该名字是显示在下载框上的文件名字 -->
+		               <param name="contentDisposition">attachment;fileName="${fileName}"</param>  
+		               <!-- action中輸入流的屬性名字，该属性返回的InputStream对象将被发送到浏览器 -->
+		               <param name="inputName">downloadFile</param> 
+		              <!--   通过InputStream对象读取数据，通过OutputStream对象向浏览器发送数据时使用的缓冲区的长度。  -->
+		               <param name="bufferSize">1024</param>  
+                     </result>  
+         </action>
+     </package>
+  
+</struts>
