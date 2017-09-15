@@ -10,7 +10,7 @@
      <constant name="struts.devMode" value="true" />
      
      <include file="struts/struts-customer.xml"></include>
-      <include file="struts/struts-product.xml"></include>
+     <include file="struts/struts-product.xml"></include>
    
   
 </struts>

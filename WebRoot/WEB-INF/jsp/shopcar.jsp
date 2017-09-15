@@ -52,6 +52,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
    </s:iterator>
   </table>
+   <center>
+    
+        <font size="5">共<font color="red"><s:property value="#request.pageBean.totalPages"/></font>页 </font>&nbsp;&nbsp;
+        <font size="5">共<font color="red"><s:property value="#request.pageBean.allRecordCount"/></font>条记录</font><br><br>
+         <font size="5">共<font color="red">当前是<s:property value="#request.pageBean.currentPage+1"/></font>页</font><br><br>
+        <s:if test="#request.pageBean.currentPage == 0">
+            首页&nbsp;&nbsp;&nbsp;上一页
+        </s:if>
+        
+        <s:else>
+            <a href="product_getPageProduct">首页</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="product_getPageProduct?page=<s:property value="#request.pageBean.currentPage - 1"/>">上一页</a>
+        </s:else>
+        
+        <s:if test="#request.pageBean.currentPage +1!= #request.pageBean.totalPages">
+            <a href="product_getPageProduct?page=<s:property value="#request.pageBean.currentPage + 1"/>">下一页</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="product_getPageProduct?page=<s:property value="#request.pageBean.totalPages-1"/>">尾页</a>
+        </s:if>
+        
+        <s:else>
+            下一页&nbsp;&nbsp;&nbsp;尾页
+        </s:else>
+    
+    </center><br>
    
   </body>
 </html>

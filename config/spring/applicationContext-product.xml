@@ -18,8 +18,13 @@
 	   <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="pageDao" class="com.cblue.dao.PageDaoImpl">
+	   <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="productService" class="com.cblue.service.ProductServiceImpl">
 	   <property name="productDao" ref="productDao"></property>
+	   <property name="pageDao" ref="pageDao"></property>
 	</bean>
 	
 	<bean id="productAction" class="com.cblue.action.ProductAction" scope="prototype">

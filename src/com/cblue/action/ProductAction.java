@@ -15,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.cblue.entity.Product;
 import com.cblue.service.ProductService;
+import com.cblue.vo.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -190,6 +191,25 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 			}
 		 return "download";
 			
+	}
+	
+	//实现分页效果
+	private int page;
+	
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+	
+	public String getPageProduct(){
+		System.out.println("ProductAction--getPageProduct--"+page);
+		PageBean pageBean = productService.getPageBean(page);
+		ActionContext.getContext().put("products", pageBean.getList());
+		ServletActionContext.getRequest().setAttribute("pageBean", pageBean);
+		return SUCCESS;
 	}
 	
 	public Product getModel() {

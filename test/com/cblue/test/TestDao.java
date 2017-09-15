@@ -16,13 +16,16 @@ public class TestDao {
 	@Test
 	public void testSave(){
 		ApplicationContext  context =  
-				new ClassPathXmlApplicationContext("spring/applicationContext.xml");
+				new ClassPathXmlApplicationContext("applicationContext.xml");
 		CustomerDao customerDao = (CustomerDao)context.getBean("customerDao");
-		Customer customer = new Customer();
-		customer.setUsername("zhangsan");
-		customer.setUserpass("123");
-		customer.setCreatedate(new Date());
-		customerDao.save(customer);	
+		for(int i=0;i<10;i++){
+			Customer customer = new Customer();
+			customer.setUsername("zhangsan"+i);
+			customer.setUserpass("123");
+			customer.setCreatedate(new Date());
+			customerDao.save(customer);	
+		}
+		
 	}
 	
 	@Test
@@ -35,6 +38,18 @@ public class TestDao {
 		customer.setUserpass("123");
 		System.out.println(customerDao.isExist(customer));
 		
+	}
+	@Test
+	public void saveProduct(){
+		ApplicationContext  context =  
+				new ClassPathXmlApplicationContext("applicationContext.xml");
+		ProductDao productDao = (ProductDao)context.getBean("productDao");
+		for(int i=0;i<10;i++){
+		    Product product = new Product();
+			product.setPname("new"+i);
+			product.setPrice(99);
+			productDao.save(product);
+		}
 	}
 	
 	@Test
